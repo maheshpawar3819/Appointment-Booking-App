@@ -1,27 +1,11 @@
 [
   {
-    "name": "devansh bhosale",
-    "phone": "957848575",
-    "service": "hair-cut",
-    "time": "11 am",
-    "date": "25-08-2025",
-    "notes": "nothing"
-  },
-  {
-    "name": "shubham bhosale",
-    "phone": "907048575",
-    "service": "hair-cut",
-    "time": "11 am",
-    "date": "25-08-2025",
-    "notes": "nothing"
-  },
-  {
     "name": "mahi",
-    "email": "mahi56@gmail.com",
+    "email": "mahi56100@gmail.com",
     "phone": "4849302938",
     "service": "Hair-Cut",
-    "time": "2024-12-06T02:03",
-    "date": "2024-12-18",
-    "notes": "dslkfj"
+    "time": "2024-12-10T04:11",
+    "date": "2024-12-10",
+    "notes": "sfasfs"
   }
 ]
