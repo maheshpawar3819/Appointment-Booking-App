@@ -6,28 +6,28 @@ const {
 //Controller function for Create or Update appointment
 const createOrUpdateAppointment = async (req, res) => {
   try {
-    const { name, phone, service, time, date, notes } = req.body;
+    const { name, email, phone, service, time, date, notes } = req.body;
 
-    if (!name || !phone || !service || !time || !date) {
+    if (!name || !email || !phone || !service || !time || !date) {
       return res.status(400).json({ error: "All fields are required!" });
     }
 
     const appointments = await loadAppointments();
-    
+
     const existingAppointments = appointments.find(
       (appt) => appt.phone === phone
     );
 
-
     if (existingAppointments) {
       //Update existing appointment
+      existingAppointments.email = email;
       existingAppointments.service = service;
       existingAppointments.time = time;
       existingAppointments.date = date;
       existingAppointments.notes = notes;
     } else {
       //Create new appointment
-      appointments.push({ name, phone, service, time, date, notes });
+      appointments.push({ name, email, phone, service, time, date, notes });
     }
 
     //save appointment
@@ -47,13 +47,14 @@ const createOrUpdateAppointment = async (req, res) => {
 //Controller funtion for modifying from existing appointment
 const modifyAppointment = async (req, res) => {
   try {
-    const { phone, service, time, date, notes } = req.body;
+    const { email, phone, service, time, date, notes } = req.body;
+
+    console.log(email, phone, service, time, date, notes )
     const appointments = await loadAppointments();
-    const appointment = appointments.find(
-      (appt) => appt.phone === phone
-    );
+    const appointment = appointments.find((appt) => appt.phone === phone);
 
     if (appointment) {
+      appointment.email = email;
       appointment.service = service;
       appointment.time = time;
       appointment.date = date;
@@ -80,7 +81,7 @@ const cancelAppointment = async (req, res) => {
     const index = appointments.findIndex((appt) => appt.phone === phone);
 
     if (index !== -1) {
-      appointments.splice(index,1); //it will removes appointment
+      appointments.splice(index, 1); //it will removes appointment
       //after cancell appointment save file
       await saveAppointments(appointments);
       //sending response
@@ -97,22 +98,23 @@ const cancelAppointment = async (req, res) => {
 
 // Controller function to get all appointments
 const getAllAppointments = async (req, res) => {
-    try {
-      // Load appointments from the file
-      const appointments = await loadAppointments();
-      
-      // Return the appointments data
-      res.status(200).json(appointments);
-    } catch (error) {
-      console.error("Error fetching appointments:", error);
-      res.status(500).json({ error: "An error occurred while fetching the appointments!" });
-    }
-  };
-  
+  try {
+    // Load appointments from the file
+    const appointments = await loadAppointments();
+
+    // Return the appointments data
+    res.status(200).json(appointments);
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching the appointments!" });
+  }
+};
 
 module.exports = {
   createOrUpdateAppointment,
   modifyAppointment,
   cancelAppointment,
-  getAllAppointments
+  getAllAppointments,
 };
