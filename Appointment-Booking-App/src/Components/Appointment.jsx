@@ -9,7 +9,7 @@ const AppointmentsList = () => {
     const fetchAppointments = async () => {
       try {
         const response = await axios.get("http://localhost:8080/appointments");
-        setAppointments(response.data);
+        setAppointments(response?.data);
       } catch (error) {
         setError("Failed to fetch appointments.");
         console.error("Error fetching appointments:", error);

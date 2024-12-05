@@ -48,8 +48,6 @@ const createOrUpdateAppointment = async (req, res) => {
 const modifyAppointment = async (req, res) => {
   try {
     const { email, phone, service, time, date, notes } = req.body;
-
-    console.log(email, phone, service, time, date, notes )
     const appointments = await loadAppointments();
     const appointment = appointments.find((appt) => appt.phone === phone);
 

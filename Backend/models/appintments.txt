@@ -1,11 +1,29 @@
 [
   {
-    "name": "mahi",
-    "email": "mahi56100@gmail.com",
-    "phone": "4849302938",
+    "name": "Sanket Pawar",
+    "email": "sanket507@gmail.com",
+    "phone": "7455957584",
     "service": "Hair-Cut",
-    "time": "2024-12-10T04:11",
-    "date": "2024-12-10",
-    "notes": "sfasfs"
+    "time": "2024-12-18T11:38",
+    "date": "2024-12-18",
+    "notes": "Nothing"
+  },
+  {
+    "name": "saurabh bhosale",
+    "email": "saurabh586@gmail.com",
+    "phone": "5957569586",
+    "service": "Hair-Cut",
+    "time": "2024-12-06T07:39",
+    "date": "",
+    "notes": "no"
+  },
+  {
+    "name": "mahesh",
+    "email": "maheshp7595@gmail.com",
+    "phone": "7584957584",
+    "service": "Hair-Cut",
+    "time": "2024-12-06T01:49",
+    "date": "2024-12-06",
+    "notes": ""
   }
 ]

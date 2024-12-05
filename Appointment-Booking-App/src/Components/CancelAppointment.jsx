@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CancelAppointment = () => {
   const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setPhone(e.target.value);
@@ -12,10 +14,11 @@ const CancelAppointment = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080  /cancel-appointment",
+        "http://localhost:8080/cancel-appointment",
         { phone }
       );
-      alert(response.data.message);
+      alert(response?.data?.message);
+      navigate("/");
     } catch (error) {
       alert("Error canceling appointment!");
     }
@@ -23,7 +26,9 @@ const CancelAppointment = () => {
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-      <h2 className="text-2xl font-bold text-center mb-6">Cancel Appointment</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">
+        Cancel Appointment
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="tel"

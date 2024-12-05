@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ModifyAppointment = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const ModifyAppointment = () => {
     date: "",
     notes: "",
   });
+
+  const navigate=useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,7 +25,8 @@ const ModifyAppointment = () => {
         "http://localhost:8080/modify-appointment",
         formData
       );
-      alert(response.data.message);
+      alert(response?.data?.message);
+      navigate("/");
     } catch (error) {
       alert("Error modifying appointment!");
     }

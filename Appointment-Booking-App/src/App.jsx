@@ -14,12 +14,7 @@ function App() {
         <Header />
         <div className="container mx-auto p-6">
           <Routes>
-            <Route
-              path="/"
-              element={
-               <Appointments/>
-              }
-            />
+            <Route path="/" element={<Appointments />} />
             <Route path="/book" element={<AppointmentForm />} />
             <Route path="/modify" element={<ModifyAppointment />} />
             <Route path="/cancel" element={<CancelAppointment />} />
